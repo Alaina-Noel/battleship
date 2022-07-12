@@ -25,7 +25,7 @@ class Cell
 
   def fire_upon
     @fired_upon = true
-    if @ship != nil #|| chunk of ship sunk? || chunk of ship hit
+    if @ship != nil
     @ship.hit
     end 
   end
