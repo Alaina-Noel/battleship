@@ -15,4 +15,10 @@ RSpec.describe do
         expect(@cruiser.health).to eq(3)  
         expect(@cruiser.length).to eq(@cruiser.health)     
     end 
+
+    it 'loses health' do    
+        @cruiser.hit
+        expect(@cruiser.health).to eq(2)
+    end 
+
 end
