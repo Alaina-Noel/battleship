@@ -1,11 +1,11 @@
-# require './lib/ship.rb'
+require './lib/ship.rb'
 require './lib/cell.rb'
 require 'pry'
 
 RSpec.describe do
 
   before(:each) do
-    # @cruiser = Ship.new("Cruiser", 3)
+    @cruiser = Ship.new("Cruiser", 3)
     @cell = Cell.new("B4")
   end
 
