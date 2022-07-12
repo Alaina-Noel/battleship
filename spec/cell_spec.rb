@@ -37,7 +37,7 @@ RSpec.describe do
     expect(@cell.fired_upon?).to eq(true)
   end
 
-  it 'can tell a ships health before & after bring fired_upon' do
+  xit 'can tell a ships health before & after bring fired_upon' do
     @cell.place_ship(@cruiser)
     expect(@cell.ship.health).to eq(3)
     @cell.fire_upon

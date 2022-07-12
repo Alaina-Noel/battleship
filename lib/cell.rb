@@ -13,9 +13,10 @@ class Cell
   end
 
   def place_ship(ship)
-    if self.empty?
+    if empty?
       @ship = ship
       @empty = false
+    end
   end
 
   def fired_upon?
@@ -24,7 +25,7 @@ class Cell
 
   def fire_upon
     @fired_upon = true
-    self.ship.health -= 1 #need to see ship class to make this right
+    @ship.hit
   end
 
 end
