@@ -35,8 +35,21 @@ RSpec.describe do
 
   it 'is instantiated with 16 cell objects' do
     expect(@board.cells.count).to eq(16)
-    # require 'pry' ; binding.pry
   end
+
+  it 'contains a hash where the values are all card objects' do
+    expect(@board.cells.values).to all(be_an(Cell))
+  end
+
+  it 'can validate a coordinate' do
+    expect(@board.valid_coordinate?("A1")).to eq(true)
+    expect(@board.valid_coordinate?("D4")).to eq(true)
+    expect(@board.valid_coordinate?("A5")).to eq(false)
+    expect(@board.valid_coordinate?("E1")).to eq(false)
+    expect(@board.valid_coordinate?("A22")).to eq(false)
+    expect(@board.valid_coordinate?("a5")).to eq(false)
+  end
+
 
 
 
