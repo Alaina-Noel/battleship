@@ -25,16 +25,17 @@ RSpec.describe do
     @cell_16 = Cell.new("D4")
   end
 
-  xit 'exists' do
+  it 'exists' do
     expect(@board).to be_instance_of(Board)
   end
 
-  xit 'contains a Hash object as a board of cells' do
+  it 'contains a Hash object as a board of cells' do
     expect(@board.cells.class).to eq(Hash)
   end
 
-  xit 'is instantiated with 16 cell objects' do
-    expect(@board.cells.values).to all( be_an(Cell) )
+  it 'is instantiated with 16 cell objects' do
+    expect(@board.cells.count).to eq(16)
+    # require 'pry' ; binding.pry
   end
 
 
