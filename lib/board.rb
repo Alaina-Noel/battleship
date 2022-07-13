@@ -1,9 +1,9 @@
 class Board
     attr_reader :cells
-    
+
     def initialize
         @cells = Hash.new
-        @cell_1 = Cell.new("C")
+        @cell_1 = Cell.new("C1")
         @cell_2 = Cell.new("C2")
         @cell_3 = Cell.new("C3")
         @cell_4 = Cell.new("C4")
@@ -35,9 +35,9 @@ class Board
         @cells["D2"] = @cell_14
         @cells["D3"] = @cell_15
         @cells["D4"] = @cell_16
-    end 
-        
-    #need every key of the Hash to be cell.coordinate. Need Key to be the Cell object. 
+    end
+
+    #need every key of the Hash to be cell.coordinate. Need Key to be the Cell object.
 
 
-end 
+end

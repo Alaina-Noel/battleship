@@ -35,8 +35,13 @@ RSpec.describe do
 
   it 'is instantiated with 16 cell objects' do
     expect(@board.cells.count).to eq(16)
-    # require 'pry' ; binding.pry
   end
+
+  it 'contains a hash where the values are all card objects' do
+    expect(@board.cells.values).to all(be_an(Cell))
+  end
+
+
 
 
 
