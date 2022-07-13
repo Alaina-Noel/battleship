@@ -47,5 +47,9 @@ class Board
     end
   end
 
+  def valid_placement?(ship, array_of_coordinates)
+    ship.length == array_of_coordinates.count
+  end
+
 
 end
