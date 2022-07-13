@@ -80,6 +80,11 @@ class Board
     end
   end
 
+  def place(ship, array)
+  end
+
+
+
 
 
 
