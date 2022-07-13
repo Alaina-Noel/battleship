@@ -47,6 +47,7 @@ RSpec.describe do
     expect(@board.valid_coordinate?("A5")).to eq(false)
     expect(@board.valid_coordinate?("E1")).to eq(false)
     expect(@board.valid_coordinate?("A22")).to eq(false)
+    expect(@board.valid_coordinate?("a5")).to eq(false)
   end
 
 
