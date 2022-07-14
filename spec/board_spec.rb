@@ -77,13 +77,13 @@ RSpec.describe do
     expect(@board.valid_placement?(cruiser, ["B1", "C1", "D1"])).to eq(true)
   end
 
-  it 'can place a ship in consecutive cells and verify its the same ship in consecutive cells' do 
+  it 'can place a ship in consecutive cells and verify its the same ship in consecutive cells' do
     cruiser = Ship.new("Cruiser", 3)
     @board.place(cruiser, ["A1", "A2", "A3"])
-    
-    expect(@cell_1.ship).to eq (@cell_2.ship)
+
+    expect(@cell_1.ship).to eq(@cell_2.ship)
     expect(@board.place).to eq(["A1", "A2", "A3"])
-  end 
+  end
 
 
 
