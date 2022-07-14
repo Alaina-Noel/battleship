@@ -90,12 +90,20 @@ class Board
   end
 
   def render(show_board = false)
+    render_container = []
     if show_board == true
       #show the board here
-      "hello! We are inside the render method with true"
+      cells.each do |cell|
+        render_container << cell[1].render(true)
+      end
+      render_container
     elsif show_board == false
       #don't show the board here
-      "this is the version if we don't pass in a value"
+      cells.each do |cell|
+        render_container << cell[1].render
+      end
+    render_container
+      # "this is the version if we don't pass in a value"
     end
   end
 

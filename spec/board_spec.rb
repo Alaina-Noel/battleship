@@ -99,23 +99,25 @@ RSpec.describe do
     expect(@board.valid_placement?(submarine, ["D1", "D2"])).to eq(true)
   end
 
-  it 'can render the board and reveals status of hidden ships when passing true argument' do
+  xit 'can render the board and hide status of hidden ships when passing true argument' do
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
-
     @board.place(cruiser, ["A1", "A2", "A3"])
-    @board.place(submarine, ["D1", "D2"])
-
     @board.render
 
-# first is what the user would see, 2nd is if you pass in true true value of the board revealed
-  expect(@board.render(true)).to eq("hello! We are inside the render method with true")
-  expect(@board.render).to eq("this is the version if we don't pass in a value")
-
-    # expect(@board.render).to eq("  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD . . . . \n")
-    # expect(@board.render(true).to eq("  1 2 3 4 \nA S S S . \nB . . . . \nC . . . . \nD . . . . \n"))
-    # first dot is A1 first S is A1
+    expect(@board.render).to eq("  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD . . . . \n")
   end
+
+  xit 'can render the board and reveals status of hidden ships when passing true argument' do
+    cruiser = Ship.new("Cruiser", 3)
+    submarine = Ship.new("Submarine", 2)
+    @board.place(cruiser, ["A1", "A2", "A3"])
+    @board.render
+
+    expect(@board.render(true)).to eq("  1 2 3 4 \nA S S S . \nB . . . . \nC . . . . \nD . . . . \n")
+  end
+
+
 
 
 
