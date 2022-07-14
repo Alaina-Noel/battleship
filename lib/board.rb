@@ -89,5 +89,34 @@ class Board
     end
   end
 
+  def render(show_board = false)
+    if show_board == true
+      #show the board here
+      "hello! We are inside the render method with true"
+    elsif show_board == false
+      #don't show the board here
+      "this is the version if we don't pass in a value"
+    end
+  end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 end
