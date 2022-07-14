@@ -90,7 +90,7 @@ class Board
   end
 
   def render(show_board = false)
-    render_container = []
+    render_container = ""
     if show_board == true
       #show the board here
       cells.each do |cell|
@@ -103,7 +103,6 @@ class Board
         render_container << cell[1].render
       end
     render_container
-      # "this is the version if we don't pass in a value"
     end
   end
 

@@ -99,7 +99,7 @@ RSpec.describe do
     expect(@board.valid_placement?(submarine, ["D1", "D2"])).to eq(true)
   end
 
-  xit 'can render the board and hide status of hidden ships when passing true argument' do
+  it 'can render the board and hide status of hidden ships when passing true argument' do
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
     @board.place(cruiser, ["A1", "A2", "A3"])
@@ -108,7 +108,7 @@ RSpec.describe do
     expect(@board.render).to eq("  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD . . . . \n")
   end
 
-  xit 'can render the board and reveals status of hidden ships when passing true argument' do
+  it 'can render the board and reveals status of hidden ships when passing true argument' do
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
     @board.place(cruiser, ["A1", "A2", "A3"])
