@@ -49,7 +49,7 @@ class Board
 
   def valid_placement?(ship, array_of_coordinates)
 
-    ship.length == array_of_coordinates.count
+    # ship.length == array_of_coordinates.count
 
     valid_submarine_placements = [
       ["A1", "A2"],["A2", "A3"], ["A3", "A4"],
@@ -81,13 +81,10 @@ class Board
   end
 
   def place(ship, array_ship_is_on)
-    #this method needs to iterate through the array that
-    #the ship is on & assign each of those names to a cell.
-    #For example if I place a cruiser on A1, A2, A3.
-    #then cell_1.ship == A1 & cell_2.ship == A2 &&
     array_ship_is_on.each do |array_element|
-      require "pry"
-      binding.pry
+      cells.keys.each do |cell_key|
+        cells[cell_key].place_ship(ship) if array_element == cell_key
+      end
     end
   end
 
