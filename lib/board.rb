@@ -5,10 +5,10 @@ class Board
 
   def initialize
     @cells = Hash.new
-    @cell_1 = Cell.new("C1")
-    @cell_2 = Cell.new("C2")
-    @cell_3 = Cell.new("C3")
-    @cell_4 = Cell.new("C4")
+    @cell_1 = Cell.new("A1")
+    @cell_2 = Cell.new("A2")
+    @cell_3 = Cell.new("A3")
+    @cell_4 = Cell.new("A4")
     @cell_5 = Cell.new("B1")
     @cell_6 = Cell.new("B2")
     @cell_7 = Cell.new("B3")
@@ -49,7 +49,7 @@ class Board
 
   def valid_placement?(ship, array_of_coordinates)
 
-    ship.length == array_of_coordinates.count
+    # ship.length == array_of_coordinates.count
 
     valid_submarine_placements = [
       ["A1", "A2"],["A2", "A3"], ["A3", "A4"],
@@ -79,6 +79,16 @@ class Board
       valid_cruiser_placements.include?(array_of_coordinates)
     end
   end
+
+  def place(ship, array_ship_is_on)
+    array_ship_is_on.each do |array_element|
+      cells.keys.each do |cell_key|
+        cells[cell_key].place_ship(ship) if array_element == cell_key
+      end
+    end
+  end
+
+
 
 
 
