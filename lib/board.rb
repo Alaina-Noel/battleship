@@ -5,10 +5,10 @@ class Board
 
   def initialize
     @cells = Hash.new
-    @cell_1 = Cell.new("C1")
-    @cell_2 = Cell.new("C2")
-    @cell_3 = Cell.new("C3")
-    @cell_4 = Cell.new("C4")
+    @cell_1 = Cell.new("A1")
+    @cell_2 = Cell.new("A2")
+    @cell_3 = Cell.new("A3")
+    @cell_4 = Cell.new("A4")
     @cell_5 = Cell.new("B1")
     @cell_6 = Cell.new("B2")
     @cell_7 = Cell.new("B3")
@@ -80,7 +80,15 @@ class Board
     end
   end
 
-  def place(ship, array)
+  def place(ship, array_ship_is_on)
+    #this method needs to iterate through the array that
+    #the ship is on & assign each of those names to a cell.
+    #For example if I place a cruiser on A1, A2, A3.
+    #then cell_1.ship == A1 & cell_2.ship == A2 &&
+    array_ship_is_on.each do |array_element|
+      require "pry"
+      binding.pry
+    end
   end
 
 
