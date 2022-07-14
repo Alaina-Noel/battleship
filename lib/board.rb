@@ -49,7 +49,9 @@ class Board
 
   def valid_placement?(ship, array_of_coordinates)
 
-    # ship.length == array_of_coordinates.count
+    return false if array_of_coordinates.find do |coordinate|
+      cells[coordinate].empty == false
+      end
 
     valid_submarine_placements = [
       ["A1", "A2"],["A2", "A3"], ["A3", "A4"],
@@ -72,12 +74,11 @@ class Board
       ["B1", "C1", "D1"],["B1", "C1", "D2"],
       ["B3", "C3", "D3"],["B4", "C4", "D4"],
     ]
-
-    if ship.length == 2
-      valid_submarine_placements.include?(array_of_coordinates)
-    elsif ship.length == 3
-      valid_cruiser_placements.include?(array_of_coordinates)
-    end
+      if ship.length == 2
+        valid_submarine_placements.include?(array_of_coordinates)
+      elsif ship.length == 3
+        valid_cruiser_placements.include?(array_of_coordinates)
+      end
   end
 
   def place(ship, array_ship_is_on)
@@ -87,12 +88,6 @@ class Board
       end
     end
   end
-
-
-
-
-
-
 
 
 end
