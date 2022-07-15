@@ -90,20 +90,93 @@ class Board
   end
 
   def render(show_board = false)
-    render_container = ""
+    render_container = "  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD . . . . \n"
+    final_render = ""
+
     if show_board == true
       #show the board here
-      cells.each do |cell|
-        render_container << cell[1].render(true)
+      render_container.each_char.with_index do |character, index|
+        if character != "."
+          final_render << character
+        elsif index == 13
+          final_render << cells["A1"].render(true)
+        elsif index == 15
+          final_render << cells["A2"].render(true)
+        elsif index == 17
+          final_render << cells["A3"].render(true)
+        elsif index == 19
+          final_render << cells["A4"].render(true)
+        elsif index == 24
+          final_render << cells["B1"].render(true)
+        elsif index == 26
+          final_render << cells["B2"].render(true)
+        elsif index == 28
+          final_render << cells["B3"].render(true)
+        elsif index ==30
+          final_render << cells["B4"].render(true)
+        elsif index ==35
+          final_render << cells["C1"].render(true)
+        elsif index ==37
+          final_render << cells["C2"].render(true)
+        elsif index ==39
+          final_render << cells["C3"].render(true)
+        elsif index ==41
+          final_render << cells["C4"].render(true)
+        elsif index ==46
+          final_render << cells["D1"].render(true)
+        elsif index ==48
+          final_render << cells["D2"].render(true)
+        elsif index == 50
+          final_render << cells["D3"].render(true)
+        elsif index ==52
+          final_render << cells["D4"].render(true)
+        end
       end
-      render_container
+      final_render
+
+
     elsif show_board == false
       #don't show the board here
-      cells.each do |cell|
-        render_container << cell[1].render
+      render_container.each_char.with_index do |character, index|
+        if character != "."
+          final_render << character
+        elsif index == 13
+          final_render << cells["A1"].render
+        elsif index == 15
+          final_render << cells["A2"].render
+        elsif index == 17
+          final_render << cells["A3"].render
+        elsif index == 19
+          final_render << cells["A4"].render
+        elsif index == 24
+          final_render << cells["B1"].render
+        elsif index == 26
+          final_render << cells["B2"].render
+        elsif index == 28
+          final_render << cells["B3"].render
+        elsif index ==30
+          final_render << cells["B4"].render
+        elsif index ==35
+          final_render << cells["C1"].render
+        elsif index ==37
+          final_render << cells["C2"].render
+        elsif index ==39
+          final_render << cells["C3"].render
+        elsif index ==41
+          final_render << cells["C4"].render
+        elsif index ==46
+          final_render << cells["D1"].render
+        elsif index ==48
+          final_render << cells["D2"].render
+        elsif index == 50
+          final_render << cells["D3"].render
+        elsif index ==52
+          final_render << cells["D4"].render
+        end
       end
-    render_container
+      final_render
     end
+
   end
 
 
