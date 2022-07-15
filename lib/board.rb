@@ -90,21 +90,107 @@ class Board
   end
 
   def render(show_board = false)
-    render_container = ""
+    render_container = "  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD . . . . \n"
+    final_render = ""
+require "pry"
+binding.pry
     if show_board == true
       #show the board here
-      cells.each do |cell|
-        render_container << cell[1].render(true)
+      render_container.each_char.with_index do |character, index|
+        if character != "."
+          final_render << character
+        elsif index == 13
+          final_render << cells["A1"].render(true)
+        elsif index == 15
+          final_render << cells["A2"].render(true)
+        elsif index == 17
+          final_render << cells["A3"].render(true)
+        elsif index == 19
+          final_render << cells["A4"].render(true)
+        elsif index == 24
+          final_render << cells["B1"].render(true)
+        elsif index == 26
+          final_render << cells["B2"].render(true)
+        elsif index == 28
+          final_render << cells["B3"].render(true)
+        elsif index ==30
+          final_render << cells["B4"].render(true)
+        elsif index ==35
+          final_render << cells["C1"].render(true)
+        elsif index ==37
+          final_render << cells["C2"].render(true)
+        elsif index ==39
+          final_render << cells["C3"].render(true)
+        elsif index ==41
+          final_render << cells["C4"].render(true)
+        elsif index ==46
+          final_render << cells["D1"].render(true)
+        elsif index ==48
+          final_render << cells["D2"].render(true)
+        elsif index == 50
+          final_render << cells["D3"].render(true)
+        elsif index ==52
+          final_render << cells["D4"].render(true)
+        end
       end
-      render_container
+      final_render
+#Refactoring Ideas:
+
+    #have a started/header row with 1, 2, 3, 4
+    #Then a row with A space then rendered cells in A row
+      #puts cells.values.map {|cell| " " + cell.render}[0..3]
+      #Then a row with B space then rendered cells in A row
+        #puts cells.values.map {|cell| " " + cell.render}[7..9]
+        #Then a row with C space then rendered cells in A row
+          #puts cells.values.map {|cell| " " + cell.render}[12..17]
+          #Then a row with D space then rendered cells in A row
+            #puts cells.values.map {|cell| " " + cell.render}[22..25]
+
+  #Iteration 4 - count the cells and take square root.
+
+
     elsif show_board == false
       #don't show the board here
-      cells.each do |cell|
-        render_container << cell[1].render
+      render_container.each_char.with_index do |character, index|
+        if character != "."
+          final_render << character
+        elsif index == 13
+          final_render << cells["A1"].render
+        elsif index == 15
+          final_render << cells["A2"].render
+        elsif index == 17
+          final_render << cells["A3"].render
+        elsif index == 19
+          final_render << cells["A4"].render
+        elsif index == 24
+          final_render << cells["B1"].render
+        elsif index == 26
+          final_render << cells["B2"].render
+        elsif index == 28
+          final_render << cells["B3"].render
+        elsif index ==30
+          final_render << cells["B4"].render
+        elsif index ==35
+          final_render << cells["C1"].render
+        elsif index ==37
+          final_render << cells["C2"].render
+        elsif index ==39
+          final_render << cells["C3"].render
+        elsif index ==41
+          final_render << cells["C4"].render
+        elsif index ==46
+          final_render << cells["D1"].render
+        elsif index ==48
+          final_render << cells["D2"].render
+        elsif index == 50
+          final_render << cells["D3"].render
+        elsif index ==52
+          final_render << cells["D4"].render
+        end
       end
-      render_container
-      require 'pry' ; binding.pry
+      final_render
     end
+
   end
 
 # puts "  1234\nA #{render_container[0..3]}\nB #{render_container[4..7]}\nC #{render_container[8..11]}\nD #{render_container[12..15]}"
