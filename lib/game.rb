@@ -14,12 +14,16 @@ class Game
           #computer place ships
           #player place ships
           @board = Board.new
+          cruiser = Ship.new("Cruiser", 3)
           puts @board.render
           puts "Enter the squares for the Cruiser (3 spaces):"
-          cruiser_array = gets.chomp #still a string for an answer
-          cruiser = Ship.new("Cruiser", 3)
-          @board.place(cruiser, cruiser_array.to_a) # this is where an array needs to be passed into the 2nd argument
-          puts @board.render(true)
+          user_choice_for_cruiser = gets.chomp.split(" ")
+          if @board.valid_placement?(cruiser, user_choice_for_cruiser)
+            @board.place(cruiser, user_choice_for_cruiser)
+            puts @board.render(true)
+          else 
+            puts "That isn't a valid placement."
+          end
       elsif answer == "q"
         puts "Please remove yourself from the battlefield..."
         break
