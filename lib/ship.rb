@@ -3,7 +3,6 @@ class Ship
                 :length,
                 :health,
                 :sunk
-            
 
     def initialize (name, length)
         @name = name
@@ -23,4 +22,5 @@ class Ship
     def sunk
         @sunk = true if @health < 1
     end
+    
 end
