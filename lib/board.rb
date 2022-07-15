@@ -193,21 +193,3 @@ end
 #Then a row with D space then rendered cells in A row
 #puts cells.values.map {|cell| " " + cell.render}[22..25]
 #Iteration 4 - count the cells and take square root.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-end
-
