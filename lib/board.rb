@@ -193,8 +193,14 @@ binding.pry
 
   end
 
+# puts "  1234\nA #{render_container[0..3]}\nB #{render_container[4..7]}\nC #{render_container[8..11]}\nD #{render_container[12..15]}"
+
+# @cells.map{|coordinate, cell| cell.render}
 
 
+#not sure of how to write that out to fit formatting until we have the separate lines to add together
+#each string would need the letter to start the line i.e. "A . . . . \n"
+# excitingly, it seems the render method already written should cover both the board at the beginning of the game and at any point during the game, its just getting the display portion
 
 
 
