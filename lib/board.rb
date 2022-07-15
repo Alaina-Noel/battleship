@@ -92,7 +92,8 @@ class Board
   def render(show_board = false)
     render_container = "  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD . . . . \n"
     final_render = ""
-
+require "pry"
+binding.pry
     if show_board == true
       #show the board here
       render_container.each_char.with_index do |character, index|
@@ -133,6 +134,19 @@ class Board
         end
       end
       final_render
+#Refactoring Ideas:
+
+    #have a started/header row with 1, 2, 3, 4
+    #Then a row with A space then rendered cells in A row
+      #puts cells.values.map {|cell| " " + cell.render}[0..3]
+      #Then a row with B space then rendered cells in A row
+        #puts cells.values.map {|cell| " " + cell.render}[7..9]
+        #Then a row with C space then rendered cells in A row
+          #puts cells.values.map {|cell| " " + cell.render}[12..17]
+          #Then a row with D space then rendered cells in A row
+            #puts cells.values.map {|cell| " " + cell.render}[22..25]
+
+  #Iteration 4 - count the cells and take square root.
 
 
     elsif show_board == false
