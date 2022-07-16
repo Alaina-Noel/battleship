@@ -11,20 +11,17 @@ class Game
 
       if answer.downcase == "p"
           puts "I have laid out my ships on the grid. \nYou now need to lay out your two ships.\nThe Cruiser is three units long and the Submarine is two units long."
-          #computer place ships before this (need to write that)
-          #player place ships (writing that now)
           @player_board = Board.new
           @computer_board = Board.new
           player_cruiser = Ship.new("Cruiser", 3)
           player_submarine = Ship.new("Submarine", 2)
           computer_cruiser = Ship.new("Cruiser", 3)
           computer_submarine = Ship.new("Submarine", 2)
+          computer_choices = ComputerChoices.new
 
-          randomly_generated_sub_array = valid_submarine_placements.sample
-          randomly_generated_cruiser_array = valid_cruiser_placements.sample
 
-          @computer_board.place(computer_cruiser, randomly_generated_sub_array)
-          @computer_board.place(computer_submarine, randomly_generated_cruiser_array)
+          @computer_board.place(computer_cruiser, computer_choices.randomly_generated_sub_array)
+          @computer_board.place(computer_submarine, computer_choices.randomly_generated_cruiser_array)
 
           puts @player_board.render
           puts "Enter the squares for the Cruiser in order (3 spaces) You can only place your ship vertically or horizontally:"
