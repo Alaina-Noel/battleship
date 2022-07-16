@@ -51,7 +51,7 @@ class Board
 
     return false if array_of_coordinates.find do |coordinate|
       cells[coordinate].empty == false
-      end
+    end #there's an error that points to here when you type in invalid coordinates on the game file
 
     valid_submarine_placements = [
       ["A1", "A2"],["A2", "A3"], ["A3", "A4"],
