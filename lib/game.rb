@@ -11,25 +11,26 @@ class Game
           puts "I have laid out my ships on the grid. \nYou now need to lay out your two ships.\nThe Cruiser is three units long and the Submarine is two units long."
           #computer place ships before this (need to write that)
           #player place ships (writing that now)
-          @board = Board.new
+          @player_board = Board.new
+          @computer_board = Board.new
           cruiser = Ship.new("Cruiser", 3)
           submarine = Ship.new("Submarine", 2)
-          puts @board.render
+          puts @player_board.render
           puts "Enter the squares for the Cruiser in order (3 spaces) You can only place your ship vertically or horizontally:"
           user_choice_for_cruiser = gets.chomp.split(" ")
-          unless @board.valid_placement?(cruiser, user_choice_for_cruiser)
+          unless @player_board.valid_placement?(cruiser, user_choice_for_cruiser)
             #not reaching this, yet!
             puts "That isn't a valid placement."
           else
-            @board.place(cruiser, user_choice_for_cruiser)
-            puts @board.render(true)
+            @player_board.place(cruiser, user_choice_for_cruiser)
+            puts @player_board.render(true)
             puts "Place your 2nd ship called the Submarine (2 spaces) You cannot overlap ships, so don't try!"
             user_choice_for_submarine = gets.chomp.split(" ")
-            unless @board.valid_placement?(submarine, user_choice_for_submarine)
+            unless @player_board.valid_placement?(submarine, user_choice_for_submarine)
               puts "That isn't a valid placement!"
             else
-              @board.place(submarine, user_choice_for_submarine)
-              puts @board.render(true)
+              @player_board.place(submarine, user_choice_for_submarine)
+              puts @player_board.render(true)
             end
 
           end
@@ -38,6 +39,16 @@ class Game
       else
         puts "Please try again using either p to play or q to quit."
         answer = gets.chomp
+      end
+
+
+      puts "Now that you have placed your ships, it's time to strike."
+      puts
+      until cruiser.sunk == true && submarine.sunk == true
+        puts "Which coordinate do you think your opponent ship is on?"
+        first_player_guess = gets.chomp
+        @computer_board.cells[first_player_guess].fire_upon
+        puts @computer_board.render
       end
   end
 
