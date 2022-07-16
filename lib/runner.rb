@@ -6,3 +6,4 @@ require './lib/computer_choices.rb'
 
 
 game = Game.new
+game.run

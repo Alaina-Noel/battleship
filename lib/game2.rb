@@ -13,32 +13,37 @@ class Game
     @player_input = nil
   end
 
-
-
-  def start
-    @computer_board.place(@computer_cruiser, @computer_choices.randomly_generated_sub_array)
-    @computer_board.place(@computer_submarine, @computer_choices.randomly_generated_cruiser_array)
-    puts "I have laid out my ships on the grid. \nYou now need to lay out your two ships.\nThe Cruiser is three units long and the Submarine is two units long."
-
-    puts @player_board.render(true)
-
-
-    puts "Now that you have placed your ships, it's time to strike."
-    # until player_cruiser.sunk == true && player_submarine.sunk == true || computer_cruiser.sunk == true && computer_submarine.sunk == true
-    #   puts "Which coordinate do you think your opponent ship is on?"
-    #   first_player_guess = gets.chomp
-    #   @computer_board.cells[first_player_guess].fire_upon
-    #   puts @computer_board.render
-    # end
-  end
-
-  until @player_input == "q"
-    puts "Welcome to BATTLESHIP!!!! \n Enter p to play. Enter q to quit."
-    @player_input = gets.chomp
-    if @player_input == "p"
-      start
+  def run
+    until @player_input == "q"
+      puts "Welcome to BATTLESHIP!!!! \n Enter p to play. Enter q to quit."
+      @player_input = gets.chomp
+      if @player_input == "p"
+        play_game
+        return
+      end
     end
   end
+
+
+  def play_game
+    p "Hi there This is the game"
+  #   @computer_board.place(@computer_cruiser, @computer_choices.randomly_generated_sub_array)
+  #   @computer_board.place(@computer_submarine, @computer_choices.randomly_generated_cruiser_array)
+  #   puts "I have laid out my ships on the grid. \nYou now need to lay out your two ships.\nThe Cruiser is three units long and the Submarine is two units long."
+  #
+  #   puts @player_board.render(true)
+  #
+  #
+  #   puts "Now that you have placed your ships, it's time to strike."
+  #   # until player_cruiser.sunk == true && player_submarine.sunk == true || computer_cruiser.sunk == true && computer_submarine.sunk == true
+  #   #   puts "Which coordinate do you think your opponent ship is on?"
+  #   #   first_player_guess = gets.chomp
+  #   #   @computer_board.cells[first_player_guess].fire_upon
+  #   #   puts @computer_board.render
+  #   # end
+  end
+
+
 
   #
   # def place_ship(ship)
