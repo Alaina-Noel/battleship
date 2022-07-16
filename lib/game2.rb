@@ -47,6 +47,7 @@ class Game
     until @player_board.valid_placement?(@player_submarine, user_placement_choice)
       puts "That isn't a valid placement."
       puts "Enter the squares for the #{@player_submarine.name} in order (#{@player_submarine.length} spaces). You can only place your ship vertically or horizontally:"
+      user_placement_choice = gets.chomp.split(" ")
     end
     @player_board.place(@player_submarine, user_placement_choice)
     puts @player_board.render(true)
