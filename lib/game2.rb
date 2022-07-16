@@ -1,6 +1,15 @@
 class Game
+    attr_reader :player_board, :computer_board, :player_cruiser, :player_submarine,
+                :computer_cruiser, :computer_submarine, :computer_choices
 
   def initialize
+    @player_board = Board.new
+    @computer_board = Board.new
+    @player_cruiser = Ship.new("Cruiser", 3)
+    @player_submarine = Ship.new("Submarine", 2)
+    @computer_cruiser = Ship.new("Cruiser", 3)
+    @computer_submarine = Ship.new("Submarine", 2)
+    @computer_choices = ComputerChoices.new
   end
 
   def start
@@ -8,22 +17,14 @@ class Game
     answer = gets.chomp
 
 
-
       if answer.downcase == "p"
           puts "I have laid out my ships on the grid. \nYou now need to lay out your two ships.\nThe Cruiser is three units long and the Submarine is two units long."
-          @player_board = Board.new
-          @computer_board = Board.new
-          player_cruiser = Ship.new("Cruiser", 3)
-          player_submarine = Ship.new("Submarine", 2)
-          computer_cruiser = Ship.new("Cruiser", 3)
-          computer_submarine = Ship.new("Submarine", 2)
-          computer_choices = ComputerChoices.new
 
-          @computer_board.place(computer_cruiser, computer_choices.randomly_generated_sub_array)
-          @computer_board.place(computer_submarine, computer_choices.randomly_generated_cruiser_array)
+          @computer_board.place(@computer_cruiser, @computer_choices.randomly_generated_sub_array)
+          @computer_board.place(@computer_submarine, @computer_choices.randomly_generated_cruiser_array)
 
-          place_ship(player_cruiser)
-          place_ship(player_submarine)
+          place_ship(@player_cruiser)
+          place_ship(@player_submarine)
           puts @player_board.render(true)
 
       elsif answer == "q"
