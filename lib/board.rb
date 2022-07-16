@@ -48,10 +48,11 @@ class Board
   end
 
   def valid_placement?(ship, array_of_coordinates)
-
-    return false if array_of_coordinates.find do |coordinate|
-      cells[coordinate].empty == false
-    end #there's an error that points to here when you type in invalid coordinates on the game file
+    return false if array_of_coordinates.any? {|coordinate| !valid_coordinate?(coordinate)}
+    return false if array_of_coordinates.any? {|coordinate| !cells[coordinate].empty?}
+    # return false if array_of_coordinates.find do |coordinate|
+    #   cells[coordinate].empty == false
+    # end #there's an error that points to here when you type in invalid coordinates on the game file
 
     valid_submarine_placements = [
       ["A1", "A2"],["A2", "A3"], ["A3", "A4"],
