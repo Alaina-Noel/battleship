@@ -39,11 +39,18 @@ class Game
       user_placement_choice = gets.chomp.split(" ")
     end
     @player_board.place(@player_cruiser, user_placement_choice)
+    puts @player_board.render(true)
 
+    puts "Enter the squares for the #{@player_submarine.name} in order (#{@player_submarine.length} spaces). You can only place your ship vertically or horizontally:"
+    user_placement_choice = gets.chomp.split(" ")
 
+    until @player_board.valid_placement?(@player_submarine, user_placement_choice)
+      puts "That isn't a valid placement."
+      puts "Enter the squares for the #{@player_submarine.name} in order (#{@player_submarine.length} spaces). You can only place your ship vertically or horizontally:"
+    end
+    @player_board.place(@player_submarine, user_placement_choice)
+    puts @player_board.render(true)
 
-
-  #
   #   puts "Now that you have placed your ships, it's time to strike."
   #   # until player_cruiser.sunk == true && player_submarine.sunk == true || computer_cruiser.sunk == true && computer_submarine.sunk == true
   #   #   puts "Which coordinate do you think your opponent ship is on?"
