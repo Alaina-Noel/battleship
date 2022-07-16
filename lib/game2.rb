@@ -26,13 +26,20 @@ class Game
 
 
   def play_game
-    p "Hi there This is the game"
-  #   @computer_board.place(@computer_cruiser, @computer_choices.randomly_generated_sub_array)
-  #   @computer_board.place(@computer_submarine, @computer_choices.randomly_generated_cruiser_array)
-  #   puts "I have laid out my ships on the grid. \nYou now need to lay out your two ships.\nThe Cruiser is three units long and the Submarine is two units long."
-  #
-  #   puts @player_board.render(true)
-  #
+    @computer_board.place(@computer_cruiser, @computer_choices.randomly_generated_sub_array)
+    @computer_board.place(@computer_submarine, @computer_choices.randomly_generated_cruiser_array)
+    puts "I have laid out my ships on the grid. \nYou now need to lay out your two ships.\nThe Cruiser is 3 units long and the Submarine is 2 units long."
+    puts @player_board.render(true)
+    puts "Enter the squares for the #{@player_cruiser.name} in order (#{@player_cruiser.length} spaces). You can only place your ship vertically or horizontally:"
+
+    user_placement_choice = gets.chomp.split(" ")
+    until @player_board.valid_placement?(@player_cruiser, user_placement_choice)
+      puts "That isn't a valid placement."
+      puts "Enter the squares for the #{@player_cruiser.name} in order (#{@player_cruiser.length} spaces). You can only place your ship vertically or horizontally:"
+      user_placement_choice = gets.chomp.split(" ")
+    end
+
+
   #
   #   puts "Now that you have placed your ships, it's time to strike."
   #   # until player_cruiser.sunk == true && player_submarine.sunk == true || computer_cruiser.sunk == true && computer_submarine.sunk == true
