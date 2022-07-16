@@ -28,6 +28,7 @@ class Game
   def play_game
     @computer_board.place(@computer_cruiser, @computer_choices.randomly_generated_sub_array)
     @computer_board.place(@computer_submarine, @computer_choices.randomly_generated_cruiser_array)
+    puts @computer_board.render(true)
     puts "I have laid out my ships on the grid. \nYou now need to lay out your two ships.\nThe Cruiser is 3 units long and the Submarine is 2 units long."
     puts @player_board.render(true)
     puts "Enter the squares for the #{@player_cruiser.name} in order (#{@player_cruiser.length} spaces). You can only place your ship vertically or horizontally:"
@@ -51,14 +52,19 @@ class Game
     end
     @player_board.place(@player_submarine, user_placement_choice)
     puts @player_board.render(true)
+    puts "Now that you have placed your ships, it's time to strike."
 
-  #   puts "Now that you have placed your ships, it's time to strike."
-  #   # until player_cruiser.sunk == true && player_submarine.sunk == true || computer_cruiser.sunk == true && computer_submarine.sunk == true
-  #   #   puts "Which coordinate do you think your opponent ship is on?"
-  #   #   first_player_guess = gets.chomp
-  #   #   @computer_board.cells[first_player_guess].fire_upon
-  #   #   puts @computer_board.render
-  #   # end
+    until player_cruiser.sunk == true && player_submarine.sunk == true || computer_cruiser.sunk == true && computer_submarine.sunk == true
+      puts "Which coordinate do you think your opponent ship is on?"
+      first_player_guess = gets.chomp
+      @computer_board.cells[first_player_guess].fire_upon
+      puts @computer_board.render
+      puts
+      #code where computer takes shots
+      puts "I've taken my shot as well"
+    end
+
+
   end
 
 
@@ -78,7 +84,3 @@ class Game
   # end
 
 end
-
-#I think this should be added to the unless statement for validating board placement but valid_coordinate
-#can only be called on a board object & i am calling it on an array.
-#&& user_choice_for_cruiser.all? {|coordinate| valid_coordinate?(coordinate)}
