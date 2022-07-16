@@ -38,6 +38,9 @@ class Game
       puts "Enter the squares for the #{@player_cruiser.name} in order (#{@player_cruiser.length} spaces). You can only place your ship vertically or horizontally:"
       user_placement_choice = gets.chomp.split(" ")
     end
+    @player_board.place(@player_cruiser, user_placement_choice)
+
+
 
 
   #
