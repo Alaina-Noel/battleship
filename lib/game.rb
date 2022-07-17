@@ -72,7 +72,8 @@ class Game
         puts "=============COMPUTER BOARD============="
         puts @computer_board.render
         puts
-        next_cell = @player_board.cells[@computer_guess_array.shuffle.pop]
+        @computer_guess_array.shuffle!
+        next_cell = @player_board.cells[@computer_guess_array.delete_at(0)]
         next_cell.fire_upon
         puts "I've taken my shot as well"
         puts "==============PLAYER BOARD=============="
