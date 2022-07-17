@@ -76,29 +76,11 @@ class Game
       puts "I've taken my shot as well"
       puts "==============PLAYER BOARD=============="
       puts @player_board.render(true)
-      require "pry"
-      binding.pry
     end
 
     puts "Game over!"
 
 
   end
-
-
-
-  #
-  # def place_ship(ship)
-  #   puts @player_board.render
-  #   puts "Enter the squares for the #{ship.name} in order (#{ship.length} spaces). You can only place your ship vertically or horizontally:"
-  #   user_placement_choice = gets.chomp.split(" ")
-  #
-  #   until @player_board.valid_placement?(ship, user_placement_choice)
-  #     puts "That isn't a valid placement."
-  #     puts "Enter the squares for the #{ship.name} in order (#{ship.length} spaces). You can only place your ship vertically or horizontally:"
-  #     user_placement_choice = gets.chomp.split(" ")
-  #   end
-  #   @player_board.place(ship, user_placement_choice)
-  # end
 
 end
