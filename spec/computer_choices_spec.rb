@@ -17,4 +17,14 @@ RSpec.describe do
 
     end
 
+    it 'cannot overlap ships by accident' do
+      computer_choices = ComputerChoices.new
+
+      expect(computer_choices.valid_placement_computer?).to eq(true)
+    end
+
+    xit 'cannot place ships outside of the board' do
+      computer_choices = ComputerChoices.new
+
+    end
 end
