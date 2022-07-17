@@ -10,8 +10,8 @@ class Game
     @player_submarine = Ship.new("Submarine", 2)
     @computer_cruiser = Ship.new("Cruiser", 3)
     @computer_submarine = Ship.new("Submarine", 2)
-    @computer_choices = ComputerChoices.new
     @player_input = nil
+    @computer_choices = nil
     @computer_guess_array = ["A1", "A2", "A3", "A4", "B1", "B2", "B3", "B4", "C1", "C2", "C3", "C4", "D1", "D2", "D3", "D4"]
   end
 
@@ -20,11 +20,20 @@ class Game
       puts "Welcome to BATTLESHIP!!!! \n Enter p to play. Enter q to quit."
       @player_input = gets.chomp
       if @player_input == "p"
+        run_computer_choices
         play_game
         return
       end
     end
   end
+
+  def run_computer_choices
+      @computer_choices = ComputerChoices.new
+      until computer_choices.valid_placement_computer?
+        @computer_choices = ComputerChoices.new
+    end
+  end
+
 
 
   def play_game
@@ -67,8 +76,6 @@ class Game
       puts "I've taken my shot as well"
       puts "==============PLAYER BOARD=============="
       puts @player_board.render(true)
-      require "pry"
-      binding.pry
     end
 
     puts "Game over!"
