@@ -67,9 +67,11 @@ class Game
       puts "I've taken my shot as well"
       puts "==============PLAYER BOARD=============="
       puts @player_board.render(true)
-      puts "=============COMPUTER BOARD============="
-      puts @computer_board.render(true)
+      require "pry"
+      binding.pry
     end
+
+    puts "Game over!"
 
 
   end

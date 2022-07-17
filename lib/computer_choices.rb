@@ -25,4 +25,12 @@ class ComputerChoices
     ].sample
   end
 
+  def valid_placement_computer?
+    @randomly_generated_sub_array & @randomly_generated_cruiser_array == []
+  end
+
+
 end
+
+choices1 = ComputerChoices.new
+p choices1.valid_placement_computer?
