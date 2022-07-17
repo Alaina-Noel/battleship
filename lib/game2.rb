@@ -1,6 +1,7 @@
 class Game
     attr_reader :player_board, :computer_board, :player_cruiser, :player_submarine,
-                :computer_cruiser, :computer_submarine, :computer_choices, :player_input
+                :computer_cruiser, :computer_submarine, :computer_choices, :player_input,
+                :computer_guess_array
 
   def initialize
     @player_board = Board.new
@@ -11,6 +12,7 @@ class Game
     @computer_submarine = Ship.new("Submarine", 2)
     @computer_choices = ComputerChoices.new
     @player_input = nil
+    @computer_guess_array = ["A1", "A2", "A3", "A4", "B1", "B2", "B3", "B4", "C1", "C2", "C3", "C4", "D1", "D2", "D3", "D4"]
   end
 
   def run
@@ -28,7 +30,6 @@ class Game
   def play_game
     @computer_board.place(@computer_cruiser, @computer_choices.randomly_generated_sub_array)
     @computer_board.place(@computer_submarine, @computer_choices.randomly_generated_cruiser_array)
-    puts @computer_board.render(true)
     puts "I have laid out my ships on the grid. \nYou now need to lay out your two ships.\nThe Cruiser is 3 units long and the Submarine is 2 units long."
     puts @player_board.render(true)
     puts "Enter the squares for the #{@player_cruiser.name} in order (#{@player_cruiser.length} spaces). You can only place your ship vertically or horizontally:"
@@ -58,10 +59,16 @@ class Game
       puts "Which coordinate do you think your opponent ship is on?"
       first_player_guess = gets.chomp
       @computer_board.cells[first_player_guess].fire_upon
+      puts "=============COMPUTER BOARD============="
       puts @computer_board.render
       puts
-      #code where computer takes shots
+      next_cell = @player_board.cells[@computer_guess_array.shuffle.pop]
+      next_cell.fire_upon
       puts "I've taken my shot as well"
+      puts "==============PLAYER BOARD=============="
+      puts @player_board.render(true)
+      puts "=============COMPUTER BOARD============="
+      puts @computer_board.render(true)
     end
 
 
