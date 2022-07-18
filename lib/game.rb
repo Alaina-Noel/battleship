@@ -65,22 +65,22 @@ class Game
     puts @player_board.render(true)
     puts "Enter the squares for the #{@player_cruiser.name} in order (#{@player_cruiser.length} spaces). You can only place your ship vertically or horizontally:"
 
-    user_placement_choice = gets.chomp.split(" ")
+    user_placement_choice = gets.chomp.upcase.split(" ")
     until @player_board.valid_placement?(@player_cruiser, user_placement_choice)
       puts "That isn't a valid placement."
       puts "Enter the squares for the #{@player_cruiser.name} in order (#{@player_cruiser.length} spaces). You can only place your ship vertically or horizontally:"
-      user_placement_choice = gets.chomp.split(" ")
+      user_placement_choice = gets.chomp.upcase.split(" ")
     end
     @player_board.place(@player_cruiser, user_placement_choice)
     puts @player_board.render(true)
 
     puts "Enter the squares for the #{@player_submarine.name} in order (#{@player_submarine.length} spaces). You can only place your ship vertically or horizontally:"
-    user_placement_choice = gets.chomp.split(" ")
+    user_placement_choice = gets.chomp.upcase.split(" ")
 
     until @player_board.valid_placement?(@player_submarine, user_placement_choice)
       puts "That isn't a valid placement."
       puts "Enter the squares for the #{@player_submarine.name} in order (#{@player_submarine.length} spaces). You can only place your ship vertically or horizontally:"
-      user_placement_choice = gets.chomp.split(" ")
+      user_placement_choice = gets.chomp.upcase.split(" ")
     end
     @player_board.place(@player_submarine, user_placement_choice)
     puts @player_board.render(true)
@@ -88,7 +88,7 @@ class Game
 
     until @player_cruiser.sunk == true && @player_submarine.sunk == true || @computer_cruiser.sunk == true && @computer_submarine.sunk == true
       puts "Which coordinate do you think your opponent ship is on?"
-      first_player_guess = gets.chomp
+      first_player_guess = gets.chomp.upcase
       if @computer_board.valid_coordinate?(first_player_guess)
         if @computer_board.cells[first_player_guess].fired_upon == true
           puts "You have already shot at that coordinate, please try again."
