@@ -42,6 +42,7 @@ class Game
     elsif @player_cruiser.sunk == true && @player_submarine.sunk == true
     puts "Try again another day, I won!"
     end
+    run
   end
 
   def play_game
