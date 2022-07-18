@@ -16,4 +16,9 @@ RSpec.describe do
     expect(game.start).to eq("heyo")
   end
 
+  xit 'can end the game when ships sunk' do
+    game = Game.new
+    game.start
+
+  end
 end

@@ -36,6 +36,7 @@ class Game
     end
   end
 
+
   def give_feedback_to_user(guess)
     if !@computer_board.cells[guess].empty && @computer_board.cells[guess].ship.sunk
       puts "You've sunk a ship with your shot on cell #{guess}!"
@@ -44,6 +45,16 @@ class Game
     elsif !@computer_board.cells[guess].empty
       puts "You've hit cell #{guess}!" #stopped here, run the program & see if it works next
     end
+  end
+
+
+  def end_game_coda
+    if @computer_cruiser.sunk == true && @computer_submarine.sunk == true
+    puts "Congratulations! You won!"
+    elsif @player_cruiser.sunk == true && @player_submarine.sunk == true
+    puts "Try again another day, I won!"
+    end
+    run
   end
 
 
@@ -97,10 +108,7 @@ class Game
         puts "Please enter a VALID coordinate within the playing field."
       end
     end
-
-    puts "Game over!"
-
-
+    end_game_coda
   end
 
 end
