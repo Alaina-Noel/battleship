@@ -1,7 +1,9 @@
 class Game
-    attr_reader :player_board, :computer_board, :player_cruiser, :player_submarine,
-                :computer_cruiser, :computer_submarine, :computer_choices, :player_input,
-                :computer_guess_array
+  attr_reader :player_board, :computer_board,
+              :player_cruiser, :player_submarine,
+              :computer_cruiser, :computer_submarine,
+              :computer_choices, :player_input,
+              :computer_guess_array
 
   def initialize
     @player_board = Board.new
@@ -28,9 +30,9 @@ class Game
   end
 
   def run_computer_choices
+    @computer_choices = ComputerChoices.new
+    until computer_choices.valid_placement_computer?
       @computer_choices = ComputerChoices.new
-      until computer_choices.valid_placement_computer?
-        @computer_choices = ComputerChoices.new
     end
   end
 
