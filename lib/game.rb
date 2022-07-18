@@ -70,18 +70,22 @@ class Game
       puts "Which coordinate do you think your opponent ship is on?"
       first_player_guess = gets.chomp
       if @computer_board.valid_coordinate?(first_player_guess)
-        @computer_board.cells[first_player_guess].fire_upon
-        puts "=============COMPUTER BOARD============="
-        puts @computer_board.render
-        puts
-        @computer_guess_array.shuffle!
-        next_cell = @player_board.cells[@computer_guess_array.delete_at(0)]
-        next_cell.fire_upon
-        puts "I've taken my shot as well"
-        puts "==============PLAYER BOARD=============="
-        puts @player_board.render(true)
+        if @computer_board.cells[first_player_guess].fired_upon == true
+          puts "You have already shot at that coordinate, please try again."
+        elsif
+          @computer_board.cells[first_player_guess].fire_upon
+          puts "=============COMPUTER BOARD============="
+          puts @computer_board.render
+          puts
+          @computer_guess_array.shuffle!
+          next_cell = @player_board.cells[@computer_guess_array.delete_at(0)]
+          next_cell.fire_upon
+          puts "I've taken my shot as well"
+          puts "==============PLAYER BOARD=============="
+          puts @player_board.render(true)
+          end
       elsif
-        puts "Please enter a VALID coordinate"
+        puts "Please enter a VALID coordinate within the playing field."
       end
     end
 
