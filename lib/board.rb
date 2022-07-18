@@ -50,9 +50,6 @@ class Board
   def valid_placement?(ship, array_of_coordinates)
     return false if array_of_coordinates.any? {|coordinate| !valid_coordinate?(coordinate)}
     return false if array_of_coordinates.any? {|coordinate| !cells[coordinate].empty?}
-    # return false if array_of_coordinates.find do |coordinate|
-    #   cells[coordinate].empty == false
-    # end #there's an error that points to here when you type in invalid coordinates on the game file
 
     valid_submarine_placements = [
       ["A1", "A2"],["A2", "A3"], ["A3", "A4"],
@@ -97,6 +94,7 @@ class Board
     final_render = ""
 
     if show_board == true
+      #show board with true value passed in
       render_container.each_char.with_index do |character, index|
         if character != "."
           final_render << character
@@ -179,18 +177,4 @@ class Board
     end
   end
 
-
 end
-
-#Refactoring Ideas:
-
-#have a started/header row with 1, 2, 3, 4
-#Then a row with A space then rendered cells in A row
-#puts cells.values.map {|cell| " " + cell.render}[0..3]
-#Then a row with B space then rendered cells in A row
-#puts cells.values.map {|cell| " " + cell.render}[7..9]
-#Then a row with C space then rendered cells in A row
-#puts cells.values.map {|cell| " " + cell.render}[12..17]
-#Then a row with D space then rendered cells in A row
-#puts cells.values.map {|cell| " " + cell.render}[22..25]
-#Iteration 4 - count the cells and take square root.
