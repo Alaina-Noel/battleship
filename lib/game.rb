@@ -36,13 +36,27 @@ class Game
     end
   end
 
+
+  def give_feedback_to_user(guess)
+    if !@computer_board.cells[guess].empty && @computer_board.cells[guess].ship.sunk
+      puts "You've sunk a ship with your shot on cell #{guess}!"
+    elsif @computer_board.cells[guess].empty
+      puts "#{guess} was a miss!"
+    elsif !@computer_board.cells[guess].empty
+      puts "You've hit cell #{guess}!" #stopped here, run the program & see if it works next
+    end
+  end
+
+
   def end_game_coda
     if @computer_cruiser.sunk == true && @computer_submarine.sunk == true
     puts "Congratulations! You won!"
     elsif @player_cruiser.sunk == true && @player_submarine.sunk == true
     puts "Try again another day, I won!"
     end
+    run
   end
+
 
   def play_game
     @computer_board.place(@computer_cruiser, @computer_choices.randomly_generated_cruiser_array)
@@ -82,7 +96,7 @@ class Game
           @computer_board.cells[first_player_guess].fire_upon
           puts "=============COMPUTER BOARD============="
           puts @computer_board.render
-          puts
+          give_feedback_to_user(first_player_guess)
           @computer_guess_array.shuffle!
           next_cell = @player_board.cells[@computer_guess_array.delete_at(0)]
           next_cell.fire_upon
