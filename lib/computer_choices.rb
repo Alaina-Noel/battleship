@@ -1,5 +1,6 @@
 class ComputerChoices
-  attr_reader :randomly_generated_sub_array, :randomly_generated_cruiser_array
+  attr_reader :randomly_generated_sub_array,
+              :randomly_generated_cruiser_array
 
   def initialize
     @randomly_generated_sub_array = [
@@ -23,6 +24,10 @@ class ComputerChoices
       ["B1", "C1", "D1"],["B1", "C1", "D2"],
       ["B3", "C3", "D3"],["B4", "C4", "D4"],
     ].sample
+  end
+
+  def valid_placement_computer?
+    @randomly_generated_sub_array & @randomly_generated_cruiser_array == []
   end
 
 end
