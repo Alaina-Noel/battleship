@@ -43,7 +43,18 @@ class Game
     elsif @computer_board.cells[guess].empty
       puts "#{guess} was a miss!"
     elsif !@computer_board.cells[guess].empty
-      puts "You've hit cell #{guess}!" #stopped here, run the program & see if it works next
+      puts "You've hit cell #{guess}!"
+    end
+  end
+
+  def give_feedback_from_computer(guess_cell_object)
+    guess = guess_cell_object.coordinate
+    if !@player_board.cells[guess].empty && @player_board.cells[guess].ship.sunk
+      puts "I've sunk your ship with my guess on #{guess}!"
+    elsif @player_board.cells[guess].empty
+      puts "My guess at #{guess} was a miss!"
+    elsif !@player_board.cells[guess].empty
+      puts "HAHA I've hit cell #{guess}!"
     end
   end
 
@@ -100,7 +111,8 @@ class Game
           @computer_guess_array.shuffle!
           next_cell = @player_board.cells[@computer_guess_array.delete_at(0)]
           next_cell.fire_upon
-          puts "I've taken my shot as well"
+          give_feedback_from_computer(next_cell)
+        #############################################################
           puts "==============PLAYER BOARD=============="
           puts @player_board.render(true)
           end
