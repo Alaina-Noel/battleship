@@ -36,7 +36,13 @@ class Game
     end
   end
 
-
+  def end_game_coda
+    if @computer_cruiser.sunk == true && @computer_submarine.sunk == true
+    puts "Congratulations! You won!"
+    elsif @player_cruiser.sunk == true && @player_submarine.sunk == true
+    puts "Try again another day, I won!"
+    end
+  end
 
   def play_game
     @computer_board.place(@computer_cruiser, @computer_choices.randomly_generated_cruiser_array)
@@ -88,10 +94,7 @@ class Game
         puts "Please enter a VALID coordinate within the playing field."
       end
     end
-
-    puts "Game over!"
-
-
+    end_game_coda
   end
 
 end
