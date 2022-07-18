@@ -1,5 +1,6 @@
 class ComputerChoices
-  attr_reader :randomly_generated_sub_array, :randomly_generated_cruiser_array
+  attr_reader :randomly_generated_sub_array,
+              :randomly_generated_cruiser_array
 
   def initialize
     @randomly_generated_sub_array = [
