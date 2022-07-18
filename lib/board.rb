@@ -94,7 +94,6 @@ class Board
     final_render = ""
 
     if show_board == true
-      #show board with true value passed in
       render_container.each_char.with_index do |character, index|
         if character != "."
           final_render << character

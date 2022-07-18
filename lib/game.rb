@@ -36,7 +36,6 @@ class Game
     end
   end
 
-
   def give_feedback_to_user(guess)
     if !@computer_board.cells[guess].empty && @computer_board.cells[guess].ship.sunk
       puts "You've sunk a ship with your shot on cell #{guess}!"
@@ -57,7 +56,6 @@ class Game
       puts "HAHA I've hit cell #{guess}!"
     end
   end
-
 
   def end_game_coda
     if @computer_cruiser.sunk == true && @computer_submarine.sunk == true
@@ -102,7 +100,7 @@ class Game
       player_guess = gets.chomp.upcase
       if @computer_board.valid_coordinate?(player_guess)
         if @computer_board.cells[player_guess].fired_upon == true
-          puts "You have already shot at that coordinate, please try again."
+          puts "You really shouldn't waste time shooting at the same coordinate, please try again."
         elsif
           @computer_board.cells[player_guess].fire_upon
           puts "=============COMPUTER BOARD============="

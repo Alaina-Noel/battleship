@@ -4,6 +4,5 @@ require './lib/board.rb'
 require './lib/game.rb'
 require './lib/computer_choices.rb'
 
-
 game = Game.new
 game.run
