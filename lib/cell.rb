@@ -27,10 +27,10 @@ class Cell
   end
 
   def fire_upon
-    @fired_upon = true
-    if @ship != nil
-    @ship.hit
+    if @ship != nil && @fired_upon == false
+      @ship.hit
     end
+    @fired_upon = true
   end
 
   def render(show_ship = false)

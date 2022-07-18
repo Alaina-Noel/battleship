@@ -65,8 +65,6 @@ class Game
     puts "Now that you have placed your ships, it's time to strike."
 
     until @player_cruiser.sunk == true && @player_submarine.sunk == true || @computer_cruiser.sunk == true && @computer_submarine.sunk == true
-      require "pry"
-      binding.pry
       puts "Which coordinate do you think your opponent ship is on?"
       first_player_guess = gets.chomp
       if @computer_board.valid_coordinate?(first_player_guess)
