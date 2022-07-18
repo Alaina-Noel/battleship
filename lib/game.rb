@@ -36,7 +36,7 @@ class Game
     end
   end
 
-  def end_game
+  def end_game_coda
     if @computer_cruiser.sunk == true && @computer_submarine.sunk == true
     puts "Congratulations! You won!"
     elsif @player_cruiser.sunk == true && @player_submarine.sunk == true
@@ -94,7 +94,7 @@ class Game
         puts "Please enter a VALID coordinate within the playing field."
       end
     end
-    end_game
+    end_game_coda
   end
 
 end
