@@ -88,15 +88,15 @@ class Game
 
     until @player_cruiser.sunk == true && @player_submarine.sunk == true || @computer_cruiser.sunk == true && @computer_submarine.sunk == true
       puts "Which coordinate do you think your opponent ship is on?"
-      first_player_guess = gets.chomp.upcase
-      if @computer_board.valid_coordinate?(first_player_guess)
-        if @computer_board.cells[first_player_guess].fired_upon == true
+      player_guess = gets.chomp.upcase
+      if @computer_board.valid_coordinate?(player_guess)
+        if @computer_board.cells[player_guess].fired_upon == true
           puts "You have already shot at that coordinate, please try again."
         elsif
-          @computer_board.cells[first_player_guess].fire_upon
+          @computer_board.cells[player_guess].fire_upon
           puts "=============COMPUTER BOARD============="
           puts @computer_board.render
-          give_feedback_to_user(first_player_guess)
+          give_feedback_to_user(player_guess)
           @computer_guess_array.shuffle!
           next_cell = @player_board.cells[@computer_guess_array.delete_at(0)]
           next_cell.fire_upon
