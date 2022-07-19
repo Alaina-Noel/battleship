@@ -30,4 +30,5 @@ RSpec.describe do
     expect(game.player_input).to eq(nil)
     expect(game.computer_choices).to eq(nil)
   end
+
 end
