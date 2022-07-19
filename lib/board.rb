@@ -1,7 +1,7 @@
 class Board
   attr_reader :cells, :cell_1, :cell_2, :cell_3, :cell_4, :cell_5,
               :cell_6, :cell_7, :cell_8, :cell_9, :cell_10, :cell_11,
-              :cell_12, :cell_13, :cell_14, :cell_15, :cell_16, :cell_17
+              :cell_12, :cell_13, :cell_14, :cell_15, :cell_16
 
   def initialize
     @cells = Hash.new
@@ -40,11 +40,7 @@ class Board
   end
 
   def valid_coordinate?(coordinate)
-    if cells.keys.include?(coordinate)
-      true
-    else
-      false
-    end
+    cells.keys.include?(coordinate)
   end
 
   def valid_placement?(ship, array_of_coordinates)
