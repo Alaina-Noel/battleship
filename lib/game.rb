@@ -30,7 +30,7 @@ class Game
 
   def run_computer_choices
     @computer_choices = ComputerChoices.new
-    until computer_choices.valid_placement_computer?
+    until @computer_choices.valid_placement_computer?
       @computer_choices = ComputerChoices.new
     end
   end
@@ -57,9 +57,9 @@ class Game
   end
 
   def end_game_coda
-    if @computer_cruiser.sunk == true && @computer_submarine.sunk == true
+    if @computer_cruiser.sunk && @computer_submarine.sunk
     puts "Congratulations! You won!"
-    elsif @player_cruiser.sunk == true && @player_submarine.sunk == true
+    elsif @player_cruiser.sunk && @player_submarine.sunk
     puts "Try again another day, I won!"
     end
     run
