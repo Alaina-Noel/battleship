@@ -122,7 +122,6 @@ class Board
       final_render
 
     elsif show_board == false
-      #don't show the board here
       render_container.each_char.with_index do |character, index|
         if character != "."
           final_render << character
