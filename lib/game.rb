@@ -66,11 +66,14 @@ class Game
     run
   end
 
-
-  def play_game
+  def create_computer_board
     @computer_board.place(@computer_cruiser, @computer_choices.randomly_generated_cruiser_array)
     @computer_board.place(@computer_submarine, @computer_choices.randomly_generated_sub_array)
     puts "I have laid out my ships on the grid. \nYou now need to lay out your two ships.\nThe Cruiser is 3 units long and the Submarine is 2 units long."
+  end
+
+  def play_game
+    create_computer_board
     puts @player_board.render(true)
     puts "Enter the squares for the #{@player_cruiser.name} in order (#{@player_cruiser.length} spaces). You can only place your ship vertically or horizontally:"
 
