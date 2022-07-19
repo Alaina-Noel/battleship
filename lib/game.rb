@@ -24,7 +24,6 @@ class Game
       if @player_input == "p"
         run_computer_choices
         play_game
-        return
       end
     end
   end
