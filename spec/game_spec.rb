@@ -30,34 +30,4 @@ RSpec.describe do
     expect(game.player_input).to eq(nil)
     expect(game.computer_choices).to eq(nil)
   end
-
-  xit 'can randomize choices for the computer at beginning' do #will have random results
-    game = Game.new
-
-    expect(game.computer_choices).to eq()
-  end
-
-  xit 'can start the game' do #requires user input
-    game = Game.new
-
-    expect(game.run).to eq("Welcome to BATTLESHIP!!!! \n Enter p to play. Enter q to quit.")
-  end
-
-  xit 'can end the game when both ships sunk' do #requires user input
-    game = Game.new
-
-    expect(game.end_game_coda).to eq()
-  end
-
-  xit 'can give user feedback to the user' do #requires user input
-    game = Game.new
-
-    expect(game.give_feedback_to_user).to eq()
-  end
-
-  xit 'can give computer feedback to the user' do #requires user input
-    game = Game.new
-
-    expect(game.give_feedback_from_computer).to eq()
-  end
 end
