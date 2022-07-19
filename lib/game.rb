@@ -98,10 +98,7 @@ class Game
     puts "Now that you have placed your ships, it's time to strike."
   end
 
-  def play_game
-    create_computer_board
-    create_player_board
-
+  def take_turns
     until @player_cruiser.sunk == true && @player_submarine.sunk == true || @computer_cruiser.sunk == true && @computer_submarine.sunk == true
       puts "Which coordinate do you think your opponent ship is on?"
       player_guess = gets.chomp.upcase
@@ -117,7 +114,6 @@ class Game
           next_cell = @player_board.cells[@computer_guess_array.delete_at(0)]
           next_cell.fire_upon
           give_feedback_from_computer(next_cell)
-        #############################################################
           puts "==============PLAYER BOARD=============="
           puts @player_board.render(true)
           end
@@ -125,6 +121,12 @@ class Game
         puts "Please enter a VALID coordinate within the playing field."
       end
     end
+  end
+
+  def play_game
+    create_computer_board
+    create_player_board
+    take_turns
     end_game_coda
   end
 
