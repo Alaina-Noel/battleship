@@ -81,7 +81,7 @@ class Board
     render_container = "  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD . . . . \n"
     final_render = ""
 
-    if show_board == true
+    if show_board
       render_container.each_char.with_index do |character, index|
         if character != "."
           final_render << character
