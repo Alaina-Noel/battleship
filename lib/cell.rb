@@ -36,11 +36,11 @@ class Cell
       "S"
     elsif @fired_upon == false
       "."
-    elsif @fired_upon == true && @ship == nil
+    elsif @fired_upon && @ship == nil
       "M"
-    elsif @fired_upon == true && @ship.sunk?
+    elsif @fired_upon && @ship.sunk?
       "X"
-    elsif @fired_upon == true && @ship != nil
+    elsif @fired_upon && @ship != nil
       "H"
     end
   end
