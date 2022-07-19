@@ -72,8 +72,7 @@ class Game
     puts "I have laid out my ships on the grid. \nYou now need to lay out your two ships.\nThe Cruiser is 3 units long and the Submarine is 2 units long."
   end
 
-  def play_game
-    create_computer_board
+  def create_player_board
     puts @player_board.render(true)
     puts "Enter the squares for the #{@player_cruiser.name} in order (#{@player_cruiser.length} spaces). You can only place your ship vertically or horizontally:"
 
@@ -97,6 +96,11 @@ class Game
     @player_board.place(@player_submarine, user_placement_choice)
     puts @player_board.render(true)
     puts "Now that you have placed your ships, it's time to strike."
+  end
+
+  def play_game
+    create_computer_board
+    create_player_board
 
     until @player_cruiser.sunk == true && @player_submarine.sunk == true || @computer_cruiser.sunk == true && @computer_submarine.sunk == true
       puts "Which coordinate do you think your opponent ship is on?"
