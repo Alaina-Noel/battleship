@@ -32,9 +32,10 @@ class Cell
   end
 
   def render(show_ship = false)
-    if show_ship == true && @ship != nil && !@fired_upon
+    if show_ship && @ship != nil && !@fired_upon
+      require 'pry' ; binding.pry
       "S"
-    elsif @fired_upon == false
+    elsif !@fired_upon
       "."
     elsif @fired_upon && @ship == nil
       "M"
