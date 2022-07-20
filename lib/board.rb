@@ -1,7 +1,7 @@
 class Board
   attr_reader :cells, :cell_1, :cell_2, :cell_3, :cell_4, :cell_5,
               :cell_6, :cell_7, :cell_8, :cell_9, :cell_10, :cell_11,
-              :cell_12, :cell_13, :cell_14, :cell_15, :cell_16, :cell_17
+              :cell_12, :cell_13, :cell_14, :cell_15, :cell_16
 
   def initialize
     @cells = Hash.new
@@ -40,11 +40,7 @@ class Board
   end
 
   def valid_coordinate?(coordinate)
-    if cells.keys.include?(coordinate)
-      true
-    else
-      false
-    end
+    cells.keys.include?(coordinate)
   end
 
   def valid_placement?(ship, array_of_coordinates)
@@ -52,25 +48,17 @@ class Board
     return false if array_of_coordinates.any? {|coordinate| !cells[coordinate].empty?}
 
     valid_submarine_placements = [
-      ["A1", "A2"],["A2", "A3"], ["A3", "A4"],
-      ["B1", "B2"],["B2", "B3"], ["B3", "B4"],
-      ["C1", "C2"],["C2", "C3"], ["C3", "C4"],
-      ["D1", "D2"],["D2", "D3"], ["D3", "D4"],
-      ["A1", "B1"],["B1", "C1"], ["C1", "D1"],
-      ["A2", "B2"],["B2", "C2"], ["C2", "D2"],
-      ["A3", "B3"],["B3", "C3"], ["C3", "D3"],
-      ["A4", "B4"],["B4", "C4"], ["C4", "D4"],
+      ["A1", "A2"],["A2", "A3"], ["A3", "A4"],["B1", "B2"],["B2", "B3"], ["B3", "B4"],
+      ["C1", "C2"],["C2", "C3"], ["C3", "C4"],["D1", "D2"],["D2", "D3"], ["D3", "D4"],
+      ["A1", "B1"],["B1", "C1"], ["C1", "D1"],["A2", "B2"],["B2", "C2"], ["C2", "D2"],
+      ["A3", "B3"],["B3", "C3"], ["C3", "D3"],["A4", "B4"],["B4", "C4"], ["C4", "D4"],
     ]
 
     valid_cruiser_placements = [
-      ["A1", "A2", "A3"],["A2", "A3", "A4"],
-      ["B1", "B2", "B3"],["B2", "B3", "B4"],
-      ["C1", "C2", "C3"],["C2", "C3", "C4"],
-      ["D1", "D2", "D3"],["D2", "D3", "D4"],
-      ["A1", "B1", "C1"],["A2", "B2", "C2"],
-      ["A3", "B3", "C3"],["A4", "B4", "C4"],
-      ["B1", "C1", "D1"],["B1", "C1", "D2"],
-      ["B3", "C3", "D3"],["B4", "C4", "D4"],
+      ["A1", "A2", "A3"],["A2", "A3", "A4"],["B1", "B2", "B3"],["B2", "B3", "B4"],
+      ["C1", "C2", "C3"],["C2", "C3", "C4"],["D1", "D2", "D3"],["D2", "D3", "D4"],
+      ["A1", "B1", "C1"],["A2", "B2", "C2"],["A3", "B3", "C3"],["A4", "B4", "C4"],
+      ["B1", "C1", "D1"],["B1", "C1", "D2"],["B3", "C3", "D3"],["B4", "C4", "D4"],
     ]
       if ship.length == 2
         valid_submarine_placements.include?(array_of_coordinates)
@@ -93,7 +81,7 @@ class Board
     render_container = "  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD . . . . \n"
     final_render = ""
 
-    if show_board == true
+    if show_board
       render_container.each_char.with_index do |character, index|
         if character != "."
           final_render << character
@@ -134,7 +122,6 @@ class Board
       final_render
 
     elsif show_board == false
-      #don't show the board here
       render_container.each_char.with_index do |character, index|
         if character != "."
           final_render << character

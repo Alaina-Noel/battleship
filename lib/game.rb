@@ -24,14 +24,13 @@ class Game
       if @player_input == "p"
         run_computer_choices
         play_game
-        return
       end
     end
   end
 
   def run_computer_choices
     @computer_choices = ComputerChoices.new
-    until computer_choices.valid_placement_computer?
+    until @computer_choices.valid_placement_computer?
       @computer_choices = ComputerChoices.new
     end
   end
@@ -58,19 +57,21 @@ class Game
   end
 
   def end_game_coda
-    if @computer_cruiser.sunk == true && @computer_submarine.sunk == true
+    if @computer_cruiser.sunk && @computer_submarine.sunk
     puts "Congratulations! You won!"
-    elsif @player_cruiser.sunk == true && @player_submarine.sunk == true
+    elsif @player_cruiser.sunk && @player_submarine.sunk
     puts "Try again another day, I won!"
     end
     run
   end
 
-
-  def play_game
+  def create_computer_board
     @computer_board.place(@computer_cruiser, @computer_choices.randomly_generated_cruiser_array)
     @computer_board.place(@computer_submarine, @computer_choices.randomly_generated_sub_array)
     puts "I have laid out my ships on the grid. \nYou now need to lay out your two ships.\nThe Cruiser is 3 units long and the Submarine is 2 units long."
+  end
+
+  def create_player_board
     puts @player_board.render(true)
     puts "Enter the squares for the #{@player_cruiser.name} in order (#{@player_cruiser.length} spaces). You can only place your ship vertically or horizontally:"
 
@@ -94,7 +95,9 @@ class Game
     @player_board.place(@player_submarine, user_placement_choice)
     puts @player_board.render(true)
     puts "Now that you have placed your ships, it's time to strike."
+  end
 
+  def take_turns
     until @player_cruiser.sunk == true && @player_submarine.sunk == true || @computer_cruiser.sunk == true && @computer_submarine.sunk == true
       puts "Which coordinate do you think your opponent ship is on?"
       player_guess = gets.chomp.upcase
@@ -110,7 +113,6 @@ class Game
           next_cell = @player_board.cells[@computer_guess_array.delete_at(0)]
           next_cell.fire_upon
           give_feedback_from_computer(next_cell)
-        #############################################################
           puts "==============PLAYER BOARD=============="
           puts @player_board.render(true)
           end
@@ -118,6 +120,12 @@ class Game
         puts "Please enter a VALID coordinate within the playing field."
       end
     end
+  end
+
+  def play_game
+    create_computer_board
+    create_player_board
+    take_turns
     end_game_coda
   end
 
